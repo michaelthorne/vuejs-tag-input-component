@@ -1,60 +1,80 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="container mt-3">
+      <h1>Vue.js tag input component</h1>
+      <hr class="mb-4">
+
+      <form>
+        <fieldset class="form-group">
+          <legend>Start a new discussion</legend>
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category">
+                  <option value="">Please select…</option>
+                  <option value="1">Finance</option>
+                  <option value="2">Politics</option>
+                  <option value="3">Sport</option>
+                  <option value="4">Weather</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <label for="tags">Tags</label>
+                <tag-input></tag-input>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Start discussion</button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  import TagInput from './components/TagInput.vue'
+
+  export default {
+    components: {
+      tagInput: TagInput
+    },
+    data () {
+      return {}
     }
   }
-}
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+<style lang="scss" scoped>
+  .container {
+    max-width: 45em; /* 720 / 16 */
+  }
 </style>
