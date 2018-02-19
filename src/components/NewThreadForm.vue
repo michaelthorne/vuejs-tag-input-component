@@ -15,11 +15,7 @@
             <div class="form-group">
               <label for="category">Category</label>
               <select class="form-control" id="category">
-                <option value="">Please select…</option>
-                <option value="1">Finance</option>
-                <option value="2">Politics</option>
-                <option value="3">Sport</option>
-                <option value="4">Weather</option>
+                <option v-for="category in categories" :value="category.value">{{ category.label }}</option>
               </select>
             </div>
           </div>
@@ -64,6 +60,28 @@
     },
     data () {
       return {
+        categories: [
+          {
+            label: 'Please select…',
+            value: ''
+          },
+          {
+            label: 'Entertainment',
+            value: '1'
+          },
+          {
+            label: 'Finance',
+            value: '2'
+          },
+          {
+            label: 'News',
+            value: '3'
+          },
+          {
+            label: 'Sport',
+            value: '4'
+          }
+        ],
         tags: [
           'archive',
           'history',
