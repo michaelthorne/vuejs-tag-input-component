@@ -1,4 +1,4 @@
-# vuejs-tag-input-component
+# Vue.js tag input component
 
 > Vue.js tag input component
 
