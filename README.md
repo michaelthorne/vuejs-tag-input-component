@@ -19,4 +19,4 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 ## Credit
 
-Adam Wathan — Advanced Vue Component Design [Laracone Online 2018](https://laracon.net/#the-schedule)
+Adam Wathan — Advanced Vue Component Design [Laracon Online 2018](https://laracon.net/#the-schedule)
