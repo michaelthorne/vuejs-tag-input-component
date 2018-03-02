@@ -34,7 +34,44 @@
           <div class="col-md">
             <div class="form-group">
               <label for="tags">Tags</label>
-              <tag-input v-model="tags"></tag-input>
+
+              <tag-input v-model="tags">
+                <div class="form-control tag-input" slot-scope="{ tags, removeTag, inputBindings, inputEventHandlers }">
+                  <span class="tag-input-tag" v-for="tag in tags">
+                    <span>{{ tag }}</span>
+                    <button type="button" class="tag-input-remove" @click="removeTag(tag)">×</button>
+                  </span>
+
+                  <input class="tag-input-text" type="text"
+                         id="tags"
+                         placeholder="Add a tag…"
+                         v-on="inputEventHandlers"
+                         v-bind="inputBindings">
+                </div>
+              </tag-input>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="tags2">Tags</label>
+
+              <tag-input v-model="tags">
+                <div class="form-control tag-input" slot-scope="{ tags, removeTag, inputBindings, inputEventHandlers }">
+                  <input class="tag-input-text-alt" type="text"
+                         id="tags2"
+                         placeholder="Add a tag…"
+                         v-on="inputEventHandlers"
+                         v-bind="inputBindings">
+
+                  <span class="tag-input-tag" v-for="tag in tags">
+                    <span>{{ tag }}</span>
+                    <button type="button" class="tag-input-remove" @click="removeTag(tag)">×</button>
+                  </span>
+                </div>
+              </tag-input>
             </div>
           </div>
         </div>
@@ -98,5 +135,56 @@
 <style lang="scss" scoped>
   .card-body {
     padding: 1em;
+  }
+
+  .tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.125em;
+    padding-top: 0.625em;
+  }
+
+  .tag-input-tag {
+    align-items: center;
+    background-color: #7fdbff;
+    border-radius: 0.25em;
+    color: #001f3f;
+    display: inline-flex;
+    line-height: 1;
+    margin-bottom: 0.5em;
+    margin-right: 0.75em;
+    padding: 0.375em 0.5em;
+    user-select: none;
+  }
+
+  .tag-input-remove {
+    background-color: transparent;
+    border: 0;
+    color: #0074d9;
+    cursor: pointer;
+    margin-left: 0.25em;
+    outline: 0;
+    padding: 0;
+  }
+
+  .tag-input-text {
+    border: 0;
+    flex: 1;
+    margin-bottom: 0.5em;
+    min-width: 10em;
+    outline: 0;
+    padding-bottom: 0.125em;
+    padding-top: 0.125em;
+  }
+
+  .tag-input-text-alt {
+    border: 0;
+    display: block;
+    flex: 1;
+    margin-bottom: 0.5em;
+    min-width: 10em;
+    outline: 0;
+    padding-bottom: 0.125em;
+    padding-top: 0.125em;
   }
 </style>

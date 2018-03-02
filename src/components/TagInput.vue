@@ -1,19 +1,26 @@
-<template>
-  <div class="tag-input form-control">
-    <span v-for="tag in tags" class="tag-input-tag">
-      <span>{{ tag }}</span>
-      <button type="button" class="tag-input-remove" @click="removeTag(tag)">×</button>
-    </span>
-
-    <input class="tag-input-text" type="text" id="tags" placeholder="Add a tag…"
-           @keydown.backspace="handleTagBackspace"
-           @keydown.enter.prevent="addTag"
-           v-model="newTag">
-  </div>
-</template>
-
 <script>
   export default {
+    render () {
+      return this.$scopedSlots.default({
+        tags: this.tags,
+        removeTag: this.removeTag,
+        inputBindings: {
+          value: this.newTag
+        },
+        inputEventHandlers: {
+          input: (e) => { this.newTag = e.target.value },
+          keydown: (e) => {
+            if (e.keyCode === 8) {
+              this.handleTagBackspace()
+            }
+            if (e.keyCode === 13) {
+              e.preventDefault()
+              this.addTag()
+            }
+          }
+        }
+      })
+    },
     model: {
       prop: 'tags',
       event: 'update'
@@ -51,45 +58,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  .tag-input {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 0.125em;
-    padding-top: 0.625em;
-  }
-
-  .tag-input-tag {
-    align-items: center;
-    background-color: #7fdbff;
-    border-radius: 0.25em;
-    color: #001f3f;
-    display: inline-flex;
-    line-height: 1;
-    margin-bottom: 0.5em;
-    margin-right: 0.75em;
-    padding: 0.375em 0.5em;
-    user-select: none;
-  }
-
-  .tag-input-remove {
-    background-color: transparent;
-    border: 0;
-    color: #0074d9;
-    cursor: pointer;
-    margin-left: 0.25em;
-    outline: 0;
-    padding: 0;
-  }
-
-  .tag-input-text {
-    border: 0;
-    flex: 1;
-    margin-bottom: 0.5em;
-    min-width: 10em;
-    outline: 0;
-    padding-bottom: 0.125em;
-    padding-top: 0.125em;
-  }
-</style>
