@@ -4,6 +4,7 @@
       <span>{{ tag }}</span>
       <button type="button" class="tag-input-remove" @click="removeTag(tag)">×</button>
     </span>
+
     <input class="tag-input-text" type="text" id="tags" placeholder="Add a tag…"
            @keydown.backspace="handleTagBackspace"
            @keydown.enter.prevent="addTag"
