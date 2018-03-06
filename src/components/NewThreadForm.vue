@@ -55,29 +55,6 @@
 
         <div class="row">
           <div class="col-md">
-            <div class="form-group">
-              <label for="tags2">Tags</label>
-
-              <tag-input v-model="tags">
-                <div class="form-control tag-input" slot-scope="{ tags, removeTag, inputBindings, inputEventHandlers }">
-                  <input class="tag-input-text-alt" type="text"
-                         id="tags2"
-                         placeholder="Add a tag…"
-                         v-on="inputEventHandlers"
-                         v-bind="inputBindings">
-
-                  <span class="tag-input-tag" v-for="tag in tags">
-                    <span>{{ tag }}</span>
-                    <button type="button" class="tag-input-remove" @click="removeTag(tag)">×</button>
-                  </span>
-                </div>
-              </tag-input>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md">
             <div class="form-group mb-0">
               <button type="submit" class="btn btn-primary btn-lg">Start discussion</button>
             </div>
@@ -169,17 +146,6 @@
 
   .tag-input-text {
     border: 0;
-    flex: 1;
-    margin-bottom: 0.5em;
-    min-width: 10em;
-    outline: 0;
-    padding-bottom: 0.125em;
-    padding-top: 0.125em;
-  }
-
-  .tag-input-text-alt {
-    border: 0;
-    display: block;
     flex: 1;
     margin-bottom: 0.5em;
     min-width: 10em;
