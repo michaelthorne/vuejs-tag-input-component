@@ -39,20 +39,17 @@
         }
 
         // Add the new tag to the list of tags
-        this.$emit('update', [...this.tags, this.newTag]) // Spread syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+        this.$emit('update', [...this.tags, this.newTag])
         this.newTag = ''
       },
       removeTag (tag) {
         // Remove the selected tag from the list
-        this.$emit('update', this.tags.filter(t => t !== tag)) // arr.filter(callback[, thisArg])
-        // this.$emit('update', this.tags.filter(function (t) {
-        //   return t !== tag
-        // }))
+        this.$emit('update', this.tags.filter(t => t !== tag))
       },
       handleTagBackspace (e) {
         if (this.newTag.length === 0) {
           // Remove the last tag from the list
-          this.$emit('update', this.tags.slice(0, -1)) // arr.slice([begin[, end]])
+          this.$emit('update', this.tags.slice(0, -1))
         }
       }
     }
